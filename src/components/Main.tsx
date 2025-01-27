@@ -1,23 +1,47 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Button from "../UI/Button";
-import Done from "./Done";
 import Header from "./Header";
-import InProgress from "./InProgress";
-import Todo from "./Todo";
+import TaskComp from "./TaskComp";
 
 export default function Main() {
   return (
     <div>
-      <Header />
-      <div className="px-12 mt-[80px]">
-        <div className="flex justify-between items-center">
-          <p className="text-2xl font-semibold">Tasks</p>
-          <Button>New Task +</Button>
-        </div>
-        <div className="grid grid-cols-[1fr_1fr_1fr] gap-2 mt-4 bg-cyan-300">
-          <Todo />
-          <InProgress />
-          <Done />
-        </div>
+      <Header setToggleNav={() => {}} toggleNav={false} />
+      <div className="px-10 mt-[80px]">
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <div className="flex justify-between items-center">
+                  <p className="text-2xl font-semibold">Tasks</p>
+                  <Button>New Task +</Button>
+                </div>
+              }
+            >
+              <Route
+                path="/:projectname"
+                element={
+                  <TaskComp
+                    setParamName={() => {}}
+                    projects={[]}
+                    taskData={
+                      {
+                        /* Add valid properties here */
+                      }
+                    }
+                    startEdit={false}
+                    setStartEdit={() => {}}
+                    setEdit={() => {}}
+                    setTaskModalOpen={() => {}}
+                    setTaskData={() => {}}
+                    setProjects={() => {}}
+                  />
+                }
+              />
+            </Route>
+          </Routes>
+        </BrowserRouter>
       </div>
     </div>
   );
