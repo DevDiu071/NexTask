@@ -61,7 +61,7 @@ export default function App() {
         />
         <div>
           <Header setToggleNav={setToggleNav} toggleNav={toggleNav} />
-          <div className="px-6 md:px-12 mt-[50px]">
+          <div className="px-6 md:px-12 md:mt-[50px] mt-[90px]">
             {projects.length > 0 && (
               <div className="flex justify-between items-center">
                 <p className="text-3xl font-bold">{paramName}</p>
